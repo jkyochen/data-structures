@@ -51,7 +51,7 @@ func TestInsert(t *testing.T) {
 	}
 	v, _ = arr.Get(1)
 	if v != 1 {
-		t.Error("Insert did not work as expected.")
+		t.Fatal("Insert did not work as expected.")
 	}
 
 	err = arr.Insert(0, 3)
@@ -64,7 +64,7 @@ func TestInsert(t *testing.T) {
 	}
 	v, _ = arr.Get(2)
 	if v != 1 {
-		t.Error("Insert did not work as expected.")
+		t.Fatal("Insert did not work as expected.")
 	}
 }
 
@@ -74,7 +74,7 @@ func TestInsertEnding(t *testing.T) {
 	arr.InsertEnding(3)
 	arr.InsertEnding(2)
 	if arr.Print() != "1|3|2|" {
-		t.Error("InsertEnding did not work as expected.")
+		t.Fatal("InsertEnding did not work as expected.")
 	}
 }
 
@@ -84,7 +84,7 @@ func TestDelete(t *testing.T) {
 	err := arr.Delete(0)
 	v, _ := arr.Get(0)
 	if v != 0 {
-		t.Error("Delete did not work as expected.")
+		t.Fatal("Delete did not work as expected.")
 	}
 
 	err = arr.Delete(1)
@@ -115,12 +115,12 @@ func TestLen(t *testing.T) {
 	arr := New(3)
 	l := arr.Len()
 	if l != 0 {
-		t.Error("Len did not work as expected.")
+		t.Fatal("Len did not work as expected.")
 	}
 	arr.Insert(0, 1)
 	arr.Insert(0, 2)
 	l = arr.Len()
 	if l != 2 {
-		t.Error("Len did not work as expected.")
+		t.Fatal("Len did not work as expected.")
 	}
 }
