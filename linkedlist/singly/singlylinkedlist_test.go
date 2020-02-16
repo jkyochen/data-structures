@@ -17,14 +17,12 @@ func TestNew(t *testing.T) {
 func TestAdd(t *testing.T) {
 	list := New()
 	list.Add(&Node{
-		next: nil,
 		data: 1,
 	})
 	if list.Print() != "1|" {
 		t.Fatal("Add did not work as expected.")
 	}
 	list.Add(&Node{
-		next: nil,
 		data: 2,
 	})
 	if list.Print() != "1|2|" {
@@ -35,7 +33,6 @@ func TestAdd(t *testing.T) {
 func TestInsert(t *testing.T) {
 	list := New()
 	list.Add(&Node{
-		next: nil,
 		data: 1,
 	})
 	err := list.Insert(1, 10)
@@ -63,7 +60,6 @@ func TestInsert(t *testing.T) {
 func TestDelete(t *testing.T) {
 	list := New()
 	list.Add(&Node{
-		next: nil,
 		data: 1,
 	})
 	err := list.Delete(1)
@@ -71,15 +67,12 @@ func TestDelete(t *testing.T) {
 		t.Fatal("Delete did not work as expected.")
 	}
 	list.Add(&Node{
-		next: nil,
 		data: 1,
 	})
 	list.Add(&Node{
-		next: nil,
 		data: 2,
 	})
 	list.Add(&Node{
-		next: nil,
 		data: 3,
 	})
 	err = list.Delete(2)
