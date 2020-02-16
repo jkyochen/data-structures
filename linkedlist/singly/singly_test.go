@@ -100,7 +100,6 @@ func TestDelete(t *testing.T) {
 func TestSize(t *testing.T) {
 	list := New()
 	list.Add(&Node{
-		next: nil,
 		data: 1,
 	})
 	if list.Len() != 1 {
