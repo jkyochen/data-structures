@@ -9,7 +9,7 @@ const DEFAULT_CAPACITY = 10
 
 type ArrayList struct {
 	data   []int
-	length uint
+	length int
 }
 
 func NewArray() *ArrayList {
@@ -19,35 +19,31 @@ func NewArray() *ArrayList {
 	}
 }
 
-func NewArrayCap(capacity uint) *ArrayList {
+func NewArrayCap(capacity int) *ArrayList {
 	return &ArrayList{
 		data:   make([]int, capacity, capacity),
 		length: 0,
 	}
 }
 
-func (a *ArrayList) isOutOfIndexRange(i uint) bool {
-	if i >= uint(cap(a.data)) {
+func (a *ArrayList) isOutOfIndexRange(i int) bool {
+	if i >= cap(a.data) {
 		return true
 	}
 	return false
 }
 
-func (a *ArrayList) Get(i uint) (int, error) {
+func (a *ArrayList) Get(i int) (int, error) {
 	if a.isOutOfIndexRange(i) {
 		return 0, errors.New("Out of index range")
 	}
 	return a.data[i], nil
 }
 
-func (a *ArrayList) Insert(i uint, ele int) error {
+func (a *ArrayList) Insert(i int, ele int) error {
 
-	if a.length == uint(cap(a.data)) {
+	if a.length == cap(a.data) {
 		a.data = append(a.data, 0)
-	}
-
-	if a.isOutOfIndexRange(i) {
-		return errors.New("Out of index range")
 	}
 
 	copy(a.data[i+1:], a.data[i:])
@@ -60,7 +56,7 @@ func (a *ArrayList) InsertEnding(ele int) error {
 	return a.Insert(a.length, ele)
 }
 
-func (a *ArrayList) Delete(i uint) error {
+func (a *ArrayList) Delete(i int) error {
 
 	if a.isOutOfIndexRange(i) {
 		return errors.New("Out of index range")
@@ -75,15 +71,15 @@ func (a *ArrayList) Delete(i uint) error {
 	return nil
 }
 
-func (a *ArrayList) Len() uint {
+func (a *ArrayList) Len() int {
 	return a.length
 }
 
 func (a *ArrayList) Print() string {
 
 	var str string
-	for _, v := range a.data {
-		str += strconv.Itoa(v) + "|"
+	for i := 0; i < a.length; i++ {
+		str += strconv.Itoa(a.data[i]) + "|"
 	}
 	return str
 }
