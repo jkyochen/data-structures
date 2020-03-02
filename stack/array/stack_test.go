@@ -4,6 +4,18 @@ import (
 	"testing"
 )
 
+func TestNewStack(t *testing.T) {
+	if NewStack() == nil {
+		t.Fatal("NewStack did not work as expected.")
+	}
+}
+
+func TestNewStackCap(t *testing.T) {
+	if NewStackCap(3) == nil {
+		t.Fatal("NewStackCap did not work as expected.")
+	}
+}
+
 func TestPush(t *testing.T) {
 	stack := NewStackCap(3)
 	err := stack.Push(1)

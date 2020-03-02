@@ -4,6 +4,18 @@ import (
 	"testing"
 )
 
+func TestNewQueue(t *testing.T) {
+	if NewQueue() == nil {
+		t.Fatal("NewQueue did not work as expected.")
+	}
+}
+
+func TestNewQueueCap(t *testing.T) {
+	if NewQueueCap(3) == nil {
+		t.Fatal("NewQueueCap did not work as expected.")
+	}
+}
+
 func TestEnqueue(t *testing.T) {
 	queue := NewQueueCap(3)
 	err := queue.Enqueue(1)
