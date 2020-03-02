@@ -101,17 +101,17 @@ func TestDelete(t *testing.T) {
 		t.Fatal("Delete did not work as expected.")
 	}
 
-	err = arr.Delete(1)
+	err = arr.Delete(0)
 	if err == nil || err.Error() != "ArrayList is empty" {
 		t.Fatal("Delete did not work as expected.")
 	}
 
+	arr.Insert(0, 10)
 	err = arr.Delete(10)
 	if err == nil || err.Error() != "Out of index range" {
 		t.Fatal("Delete did not work as expected.")
 	}
 
-	arr.Insert(0, 10)
 	arr.Insert(0, 20)
 	arr.Insert(0, 30)
 	if arr.Print() != "30|20|10|" {

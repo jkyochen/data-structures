@@ -27,7 +27,7 @@ func NewArrayCap(capacity int) *ArrayList {
 }
 
 func (a *ArrayList) isOutOfIndexRange(i int) bool {
-	if i >= cap(a.data) {
+	if i >= a.length {
 		return true
 	}
 	return false
@@ -58,12 +58,12 @@ func (a *ArrayList) InsertEnding(ele int) error {
 
 func (a *ArrayList) Delete(i int) error {
 
-	if a.isOutOfIndexRange(i) {
-		return errors.New("Out of index range")
-	}
-
 	if a.length == 0 {
 		return errors.New("ArrayList is empty")
+	}
+
+	if a.isOutOfIndexRange(i) {
+		return errors.New("Out of index range")
 	}
 
 	copy(a.data[i:], a.data[i+1:])
