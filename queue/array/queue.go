@@ -5,20 +5,23 @@ import (
 	"strconv"
 )
 
-const DEFAULT_CAPACITY = 10
+const defaultCapacity = 10
 
+// Queue first input first output FIFO data structure
 type Queue struct {
 	data   []int
 	length int
 }
 
+// NewQueue create new Queue
 func NewQueue() *Queue {
 	return &Queue{
-		data:   make([]int, DEFAULT_CAPACITY, DEFAULT_CAPACITY),
+		data:   make([]int, defaultCapacity, defaultCapacity),
 		length: 0,
 	}
 }
 
+// NewQueueCap create new Queue with capacity
 func NewQueueCap(capacity int) *Queue {
 	return &Queue{
 		data:   make([]int, capacity, capacity),
@@ -26,6 +29,7 @@ func NewQueueCap(capacity int) *Queue {
 	}
 }
 
+// Enqueue add new element to Queue
 func (q *Queue) Enqueue(value int) error {
 	if q.length == cap(q.data) {
 		return errors.New("Queue is full")
@@ -36,6 +40,7 @@ func (q *Queue) Enqueue(value int) error {
 	return nil
 }
 
+// Dequeue get element from Queue
 func (q *Queue) Dequeue() (int, error) {
 	if q.length == 0 {
 		return 0, errors.New("Queue is empty")
@@ -47,7 +52,7 @@ func (q *Queue) Dequeue() (int, error) {
 	return v, nil
 }
 
-func (q *Queue) Print() string {
+func (q *Queue) print() string {
 
 	var str string
 	for i := 0; i < q.length; i++ {

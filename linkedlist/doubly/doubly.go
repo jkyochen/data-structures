@@ -5,17 +5,19 @@ import (
 	"strconv"
 )
 
-type Node struct {
-	before *Node
-	next   *Node
+type node struct {
+	before *node
+	next   *node
 	data   int
 }
 
+// DoublyLinkedList doubly linked list
 type DoublyLinkedList struct {
-	head   *Node
+	head   *node
 	length uint
 }
 
+// New new DoublyLinkedList
 func New() *DoublyLinkedList {
 	return &DoublyLinkedList{
 		head:   nil,
@@ -23,7 +25,8 @@ func New() *DoublyLinkedList {
 	}
 }
 
-func (list *DoublyLinkedList) Add(node *Node) {
+// Add new node
+func (list *DoublyLinkedList) Add(node *node) {
 	if list.head == nil {
 		list.head = node
 	} else {
@@ -37,6 +40,7 @@ func (list *DoublyLinkedList) Add(node *Node) {
 	list.length++
 }
 
+// Insert insert new element, when equal give value
 func (list *DoublyLinkedList) Insert(value int, newValue int) error {
 	curNode := list.head
 	for curNode != nil && curNode.data != value {
@@ -46,7 +50,7 @@ func (list *DoublyLinkedList) Insert(value int, newValue int) error {
 		return errors.New("don't find this value")
 	}
 
-	node := &Node{
+	node := &node{
 		before: curNode,
 		next:   curNode.next,
 		data:   newValue,
@@ -59,9 +63,10 @@ func (list *DoublyLinkedList) Insert(value int, newValue int) error {
 	return nil
 }
 
+// Delete delete give value
 func (list *DoublyLinkedList) Delete(value int) error {
 	curNode := list.head
-	var befNode *Node
+	var befNode *node
 	for curNode != nil && curNode.data != value {
 		befNode = curNode
 		curNode = curNode.next
@@ -81,13 +86,14 @@ func (list *DoublyLinkedList) Delete(value int) error {
 	return nil
 }
 
+// Len current DoublyLinkedList length
 func (list *DoublyLinkedList) Len() uint {
 	return list.length
 }
 
-func (list *DoublyLinkedList) Print() string {
+func (list *DoublyLinkedList) print() string {
 	var str string
-	var lastNode *Node
+	var lastNode *node
 	curNode := list.head
 	for curNode != nil {
 		str += strconv.Itoa(curNode.data) + "|"

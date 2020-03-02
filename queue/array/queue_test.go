@@ -22,13 +22,13 @@ func TestEnqueue(t *testing.T) {
 	if err != nil {
 		t.Fatal("Enqueue did not work as expected.")
 	}
-	if queue.Print() != "1|" {
+	if queue.print() != "1|" {
 		t.Fatal("Enqueue did not work as expected.")
 	}
 
 	queue.Enqueue(2)
 	queue.Enqueue(3)
-	if queue.Print() != "1|2|3|" {
+	if queue.print() != "1|2|3|" {
 		t.Fatal("Enqueue did not work as expected.")
 	}
 

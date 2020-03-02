@@ -7,7 +7,7 @@ import (
 func TestNew(t *testing.T) {
 	arr := New(0)
 	if arr != nil {
-		t.Fatal("New zero value array did not work as expected.")
+		t.Fatal("New zero value Array did not work as expected.")
 	}
 
 	arr = New(3)
@@ -73,7 +73,7 @@ func TestInsertEnding(t *testing.T) {
 	arr.InsertEnding(1)
 	arr.InsertEnding(3)
 	arr.InsertEnding(2)
-	if arr.Print() != "1|3|2|" {
+	if arr.print() != "1|3|2|" {
 		t.Fatal("InsertEnding did not work as expected.")
 	}
 }

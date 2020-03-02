@@ -10,13 +10,13 @@ func TestPush(t *testing.T) {
 	if err != nil {
 		t.Fatal("Push did not work as expected.")
 	}
-	if stack.Print() != "1|" {
+	if stack.print() != "1|" {
 		t.Fatal("Push did not work as expected.")
 	}
 
 	stack.Push(2)
 	stack.Push(3)
-	if stack.Print() != "1|2|3|" {
+	if stack.print() != "1|2|3|" {
 		t.Fatal("Push did not work as expected.")
 	}
 }

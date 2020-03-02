@@ -5,20 +5,23 @@ import (
 	"strconv"
 )
 
-const DEFAULT_CAPACITY = 10
+const defaultCapacity = 10
 
+// Stack last input first output LIFO data structure
 type Stack struct {
 	data   []int
 	length int
 }
 
+// NewStack create new Stack
 func NewStack() *Stack {
 	return &Stack{
-		data:   make([]int, DEFAULT_CAPACITY, DEFAULT_CAPACITY),
+		data:   make([]int, defaultCapacity, defaultCapacity),
 		length: 0,
 	}
 }
 
+// NewStackCap create new Stack with capacity
 func NewStackCap(capacity int) *Stack {
 	return &Stack{
 		data:   make([]int, capacity, capacity),
@@ -26,6 +29,7 @@ func NewStackCap(capacity int) *Stack {
 	}
 }
 
+// Push add new element to Stack
 func (s *Stack) Push(value int) error {
 	if s.length == cap(s.data) {
 		return errors.New("Stack is full")
@@ -36,6 +40,7 @@ func (s *Stack) Push(value int) error {
 	return nil
 }
 
+// Pop get element from Stack
 func (s *Stack) Pop() (int, error) {
 	if s.length == 0 {
 		return 0, errors.New("Stack is empty")
@@ -44,7 +49,7 @@ func (s *Stack) Pop() (int, error) {
 	return s.data[s.length], nil
 }
 
-func (s *Stack) Print() string {
+func (s *Stack) print() string {
 
 	var str string
 	for i := 0; i < s.length; i++ {

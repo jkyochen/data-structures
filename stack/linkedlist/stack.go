@@ -5,16 +5,18 @@ import (
 	"strconv"
 )
 
-type Node struct {
-	next *Node
+type node struct {
+	next *node
 	data int
 }
 
+// Stack last input first output LIFO data structure
 type Stack struct {
-	head   *Node
+	head   *node
 	length int
 }
 
+// NewStack create new Stack
 func NewStack() *Stack {
 	return &Stack{
 		head:   nil,
@@ -22,31 +24,33 @@ func NewStack() *Stack {
 	}
 }
 
+// Push add new element to Stack
 func (s *Stack) Push(value int) error {
-	node := &Node{
+	newNode := &node{
 		next: nil,
 		data: value,
 	}
 	if s.head == nil {
-		s.head = node
+		s.head = newNode
 	} else {
 		nextNode := s.head
 		for nextNode.next != nil {
 			nextNode = nextNode.next
 		}
-		nextNode.next = node
+		nextNode.next = newNode
 	}
 	s.length++
 	return nil
 }
 
+// Pop get element from Stack
 func (s *Stack) Pop() (int, error) {
 	if s.length == 0 {
 		return 0, errors.New("Stack is empty")
 	}
 
 	nextNode := s.head
-	var preNode *Node
+	var preNode *node
 	for nextNode.next != nil {
 		preNode = nextNode
 		nextNode = nextNode.next
@@ -60,7 +64,7 @@ func (s *Stack) Pop() (int, error) {
 	return nextNode.data, nil
 }
 
-func (s *Stack) Print() string {
+func (s *Stack) print() string {
 
 	var str string
 	nextNode := s.head

@@ -5,16 +5,18 @@ import (
 	"strconv"
 )
 
-type Node struct {
-	next *Node
+type node struct {
+	next *node
 	data int
 }
 
+// SinglyLinkedList singly linked list
 type SinglyLinkedList struct {
-	head   *Node
+	head   *node
 	length uint
 }
 
+// New new SinglyLinkedList
 func New() *SinglyLinkedList {
 	return &SinglyLinkedList{
 		head:   nil,
@@ -22,7 +24,8 @@ func New() *SinglyLinkedList {
 	}
 }
 
-func (list *SinglyLinkedList) Add(node *Node) {
+// Add new node
+func (list *SinglyLinkedList) Add(node *node) {
 	if list.head == nil {
 		list.head = node
 	} else {
@@ -35,6 +38,7 @@ func (list *SinglyLinkedList) Add(node *Node) {
 	list.length++
 }
 
+// Insert insert new element, when equal give value
 func (list *SinglyLinkedList) Insert(value int, newValue int) error {
 	curNode := list.head
 	for curNode != nil && curNode.data != value {
@@ -43,7 +47,7 @@ func (list *SinglyLinkedList) Insert(value int, newValue int) error {
 	if curNode == nil {
 		return errors.New("don't find this value")
 	}
-	node := &Node{
+	node := &node{
 		next: curNode.next,
 		data: newValue,
 	}
@@ -52,9 +56,10 @@ func (list *SinglyLinkedList) Insert(value int, newValue int) error {
 	return nil
 }
 
+// Delete delete give value
 func (list *SinglyLinkedList) Delete(value int) error {
 	curNode := list.head
-	var befNode *Node
+	var befNode *node
 	for curNode != nil && curNode.data != value {
 		befNode = curNode
 		curNode = curNode.next
@@ -71,11 +76,12 @@ func (list *SinglyLinkedList) Delete(value int) error {
 	return nil
 }
 
+// Len current SinglyLinkedList length
 func (list *SinglyLinkedList) Len() uint {
 	return list.length
 }
 
-func (list *SinglyLinkedList) Print() string {
+func (list *SinglyLinkedList) print() string {
 	var str string
 	curNode := list.head
 	for curNode != nil {

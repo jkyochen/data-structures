@@ -5,16 +5,18 @@ import (
 	"strconv"
 )
 
-type Node struct {
-	next *Node
+type node struct {
+	next *node
 	data int
 }
 
+// CircularLinkedList circular linked list
 type CircularLinkedList struct {
-	head   *Node
+	head   *node
 	length int
 }
 
+// New new CircularLinkedList
 func New() *CircularLinkedList {
 	return &CircularLinkedList{
 		head:   nil,
@@ -22,7 +24,8 @@ func New() *CircularLinkedList {
 	}
 }
 
-func (list *CircularLinkedList) Add(node *Node) {
+// Add new node
+func (list *CircularLinkedList) Add(node *node) {
 	if list.head == nil {
 		list.head = node
 		list.head.next = list.head
@@ -36,6 +39,7 @@ func (list *CircularLinkedList) Add(node *Node) {
 	list.length++
 }
 
+// Insert insert new element, when equal give value
 func (list *CircularLinkedList) Insert(value int, newValue int) error {
 	curNode := list.head
 	i := 1
@@ -45,7 +49,7 @@ func (list *CircularLinkedList) Insert(value int, newValue int) error {
 	if i > list.length {
 		return errors.New("don't find this value")
 	}
-	node := &Node{
+	node := &node{
 		next: curNode.next,
 		data: newValue,
 	}
@@ -54,9 +58,10 @@ func (list *CircularLinkedList) Insert(value int, newValue int) error {
 	return nil
 }
 
+// Delete delete give value
 func (list *CircularLinkedList) Delete(value int) error {
 	curNode := list.head
-	var befNode *Node
+	var befNode *node
 	i := 1
 	for ; i <= list.length && curNode.data != value; i++ {
 		befNode = curNode
@@ -74,11 +79,12 @@ func (list *CircularLinkedList) Delete(value int) error {
 	return nil
 }
 
+// Len current CircularLinkedList length
 func (list *CircularLinkedList) Len() int {
 	return list.length
 }
 
-func (list *CircularLinkedList) Print() string {
+func (list *CircularLinkedList) print() string {
 	var str string
 	curNode := list.head
 	for i := 1; i <= list.length; i++ {
