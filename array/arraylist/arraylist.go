@@ -16,7 +16,7 @@ type ArrayList struct {
 // NewArray create new arraylist
 func NewArray() *ArrayList {
 	return &ArrayList{
-		data:   make([]int, defaultCapacity, defaultCapacity),
+		data:   make([]int, defaultCapacity),
 		length: 0,
 	}
 }
@@ -24,16 +24,13 @@ func NewArray() *ArrayList {
 // NewArrayCap create new arraylist with capacity
 func NewArrayCap(capacity int) *ArrayList {
 	return &ArrayList{
-		data:   make([]int, capacity, capacity),
+		data:   make([]int, capacity),
 		length: 0,
 	}
 }
 
 func (a *ArrayList) isOutOfIndexRange(i int) bool {
-	if i >= a.length {
-		return true
-	}
-	return false
+	return i >= a.length
 }
 
 // Get get element with index from arraylist

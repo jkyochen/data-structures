@@ -1,7 +1,6 @@
 package arraylist
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -17,12 +16,9 @@ func TestNewArrayCap(t *testing.T) {
 	}
 }
 
-func TestisOutOfIndexRange(t *testing.T) {
+func TestIsOutOfIndexRange(t *testing.T) {
 	arr := NewArrayCap(3)
-	if arr.isOutOfIndexRange(0) != true {
-		t.Fatal("isOutOfIndexRange did not work as expected.")
-	}
-	if arr.isOutOfIndexRange(4) != false {
+	if arr.isOutOfIndexRange(4) != true {
 		t.Fatal("isOutOfIndexRange did not work as expected.")
 	}
 }
@@ -81,9 +77,21 @@ func TestInsert(t *testing.T) {
 
 func TestInsertEnding(t *testing.T) {
 	arr := NewArrayCap(3)
-	arr.InsertEnding(1)
-	arr.InsertEnding(3)
-	arr.InsertEnding(2)
+	err := arr.InsertEnding(1)
+	if err != nil {
+		t.Fatal("InsertEnding did not work as expected.")
+	}
+
+	err = arr.InsertEnding(3)
+	if err != nil {
+		t.Fatal("InsertEnding did not work as expected.")
+	}
+
+	err = arr.InsertEnding(2)
+	if err != nil {
+		t.Fatal("InsertEnding did not work as expected.")
+	}
+
 	if arr.print() != "1|3|2|" {
 		t.Fatal("InsertEnding did not work as expected.")
 	}
@@ -94,8 +102,16 @@ func TestInsertEnding(t *testing.T) {
 
 func TestDelete(t *testing.T) {
 	arr := NewArrayCap(3)
-	arr.Insert(0, 10)
-	err := arr.Delete(0)
+	err := arr.Insert(0, 10)
+	if err != nil {
+		t.Fatal("Insert did not work as expected.")
+	}
+
+	err = arr.Delete(0)
+	if err != nil {
+		t.Fatal("Push did not work as expected.")
+	}
+
 	v, _ := arr.Get(0)
 	if v != 0 {
 		t.Fatal("Delete did not work as expected.")
@@ -106,14 +122,25 @@ func TestDelete(t *testing.T) {
 		t.Fatal("Delete did not work as expected.")
 	}
 
-	arr.Insert(0, 10)
+	err = arr.Insert(0, 10)
+	if err != nil {
+		t.Fatal("Insert did not work as expected.")
+	}
+
 	err = arr.Delete(10)
 	if err == nil || err.Error() != "Out of index range" {
 		t.Fatal("Delete did not work as expected.")
 	}
 
-	arr.Insert(0, 20)
-	arr.Insert(0, 30)
+	err = arr.Insert(0, 20)
+	if err != nil {
+		t.Fatal("Insert did not work as expected.")
+	}
+	err = arr.Insert(0, 30)
+	if err != nil {
+		t.Fatal("Insert did not work as expected.")
+	}
+
 	if arr.print() != "30|20|10|" {
 		t.Fatal("Delete did not work as expected.")
 	}
@@ -121,8 +148,11 @@ func TestDelete(t *testing.T) {
 		t.Fatal("Delete did not work as expected.")
 	}
 
-	arr.Delete(1)
-	fmt.Println(arr.print())
+	err = arr.Delete(1)
+	if err != nil {
+		t.Fatal("Delete did not work as expected.")
+	}
+
 	if arr.print() != "30|10|" {
 		t.Fatal("Delete did not work as expected.")
 	}
@@ -137,8 +167,15 @@ func TestLen(t *testing.T) {
 	if l != 0 {
 		t.Fatal("Len did not work as expected.")
 	}
-	arr.Insert(0, 1)
-	arr.Insert(0, 2)
+	err := arr.Insert(0, 1)
+	if err != nil {
+		t.Fatal("Insert did not work as expected.")
+	}
+	err = arr.Insert(0, 2)
+	if err != nil {
+		t.Fatal("Insert did not work as expected.")
+	}
+
 	if arr.Len() != 2 {
 		t.Fatal("Len did not work as expected.")
 	}

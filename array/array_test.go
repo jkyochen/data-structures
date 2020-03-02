@@ -70,9 +70,19 @@ func TestInsert(t *testing.T) {
 
 func TestInsertEnding(t *testing.T) {
 	arr := New(3)
-	arr.InsertEnding(1)
-	arr.InsertEnding(3)
-	arr.InsertEnding(2)
+	err := arr.InsertEnding(1)
+	if err != nil {
+		t.Fatal("InsertEnding did not work as expected.")
+	}
+	err = arr.InsertEnding(3)
+	if err != nil {
+		t.Fatal("InsertEnding did not work as expected.")
+	}
+	err = arr.InsertEnding(2)
+	if err != nil {
+		t.Fatal("InsertEnding did not work as expected.")
+	}
+
 	if arr.print() != "1|3|2|" {
 		t.Fatal("InsertEnding did not work as expected.")
 	}
@@ -80,8 +90,16 @@ func TestInsertEnding(t *testing.T) {
 
 func TestDelete(t *testing.T) {
 	arr := New(3)
-	arr.Insert(0, 10)
-	err := arr.Delete(0)
+	err := arr.Insert(0, 10)
+	if err != nil {
+		t.Fatal("Insert did not work as expected.")
+	}
+
+	err = arr.Delete(0)
+	if err != nil {
+		t.Fatal("Push did not work as expected.")
+	}
+
 	v, _ := arr.Get(0)
 	if v != 0 {
 		t.Fatal("Delete did not work as expected.")
@@ -97,10 +115,24 @@ func TestDelete(t *testing.T) {
 		t.Fatal("Delete did not work as expected.")
 	}
 
-	arr.Insert(0, 10)
-	arr.Insert(0, 20)
-	arr.Insert(0, 30)
-	arr.Delete(1)
+	err = arr.Insert(0, 10)
+	if err != nil {
+		t.Fatal("Insert did not work as expected.")
+	}
+	err = arr.Insert(0, 20)
+	if err != nil {
+		t.Fatal("Insert did not work as expected.")
+	}
+	err = arr.Insert(0, 30)
+	if err != nil {
+		t.Fatal("Insert did not work as expected.")
+	}
+
+	err = arr.Delete(1)
+	if err != nil {
+		t.Fatal("Delete did not work as expected.")
+	}
+
 	v, _ = arr.Get(0)
 	if v != 30 {
 		t.Fatal("Delete did not work as expected.")
@@ -117,8 +149,16 @@ func TestLen(t *testing.T) {
 	if l != 0 {
 		t.Fatal("Len did not work as expected.")
 	}
-	arr.Insert(0, 1)
-	arr.Insert(0, 2)
+
+	err := arr.Insert(0, 1)
+	if err != nil {
+		t.Fatal("Insert did not work as expected.")
+	}
+	err = arr.Insert(0, 2)
+	if err != nil {
+		t.Fatal("Insert did not work as expected.")
+	}
+
 	l = arr.Len()
 	if l != 2 {
 		t.Fatal("Len did not work as expected.")

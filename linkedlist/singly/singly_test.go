@@ -106,12 +106,19 @@ func TestSize(t *testing.T) {
 		t.Fatal("Len did not work as expected.")
 	}
 
-	list.Insert(1, 2)
+	err := list.Insert(1, 2)
+	if err != nil {
+		t.Fatal("Insert did not work as expected.")
+	}
 	if list.Len() != 2 {
 		t.Fatal("Len did not work as expected.")
 	}
 
-	list.Delete(1)
+	err = list.Delete(1)
+	if err != nil {
+		t.Fatal("Delete did not work as expected.")
+	}
+
 	if list.Len() != 1 {
 		t.Fatal("Len did not work as expected.")
 	}

@@ -17,16 +17,13 @@ func New(capacity uint) *Array {
 		return nil
 	}
 	return &Array{
-		data:   make([]int, capacity, capacity),
+		data:   make([]int, capacity),
 		length: 0,
 	}
 }
 
 func (a *Array) isOutOfIndexRange(i uint) bool {
-	if i >= uint(cap(a.data)) {
-		return true
-	}
-	return false
+	return i >= uint(cap(a.data))
 }
 
 // Get get element from index

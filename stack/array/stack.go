@@ -16,7 +16,7 @@ type Stack struct {
 // NewStack create new Stack
 func NewStack() *Stack {
 	return &Stack{
-		data:   make([]int, defaultCapacity, defaultCapacity),
+		data:   make([]int, defaultCapacity),
 		length: 0,
 	}
 }
@@ -24,7 +24,7 @@ func NewStack() *Stack {
 // NewStackCap create new Stack with capacity
 func NewStackCap(capacity int) *Stack {
 	return &Stack{
-		data:   make([]int, capacity, capacity),
+		data:   make([]int, capacity),
 		length: 0,
 	}
 }

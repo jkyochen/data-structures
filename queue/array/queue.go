@@ -16,7 +16,7 @@ type Queue struct {
 // NewQueue create new Queue
 func NewQueue() *Queue {
 	return &Queue{
-		data:   make([]int, defaultCapacity, defaultCapacity),
+		data:   make([]int, defaultCapacity),
 		length: 0,
 	}
 }
@@ -24,7 +24,7 @@ func NewQueue() *Queue {
 // NewQueueCap create new Queue with capacity
 func NewQueueCap(capacity int) *Queue {
 	return &Queue{
-		data:   make([]int, capacity, capacity),
+		data:   make([]int, capacity),
 		length: 0,
 	}
 }
