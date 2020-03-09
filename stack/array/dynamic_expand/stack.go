@@ -13,8 +13,8 @@ type Stack struct {
 	length int
 }
 
-// NewStack create new Stack
-func NewStack() *Stack {
+// New create new Stack
+func New() *Stack {
 	return &Stack{
 		data:   make([]int, defaultCapacity),
 		length: 0,

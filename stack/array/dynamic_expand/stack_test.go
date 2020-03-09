@@ -4,14 +4,14 @@ import (
 	"testing"
 )
 
-func TestNewStack(t *testing.T) {
-	if NewStack() == nil {
-		t.Fatal("NewStack did not work as expected.")
+func TestNew(t *testing.T) {
+	if New() == nil {
+		t.Fatal("New did not work as expected.")
 	}
 }
 
 func TestPush(t *testing.T) {
-	stack := NewStack()
+	stack := New()
 	err := stack.Push(1)
 	if err != nil {
 		t.Fatal("Push did not work as expected.")
@@ -39,7 +39,7 @@ func TestPush(t *testing.T) {
 }
 
 func TestPop(t *testing.T) {
-	stack := NewStack()
+	stack := New()
 	err := stack.Push(1)
 	if err != nil {
 		t.Fatal("Push did not work as expected.")
