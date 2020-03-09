@@ -41,6 +41,11 @@ func (s *Stack) Pop() (int, error) {
 	return s.data[s.length], nil
 }
 
+// Len return stack length
+func (s *Stack) Len() int {
+	return s.length
+}
+
 func (s *Stack) print() string {
 
 	var str string

@@ -73,3 +73,14 @@ func TestPop(t *testing.T) {
 		t.Fatal("Pop did not work as expected.")
 	}
 }
+
+func TestLen(t *testing.T) {
+	stack := New()
+	err := stack.Push(1)
+	if err != nil {
+		t.Fatal("Push did not work as expected.")
+	}
+	if stack.Len() != 1 {
+		t.Fatal("Len did not work as expected.")
+	}
+}
