@@ -88,4 +88,12 @@ func TestLen(t *testing.T) {
 	if stack.Len() != 1 {
 		t.Fatal("Len did not work as expected.")
 	}
+
+	v, err := stack.Pop()
+	if err != nil || v != 1 {
+		t.Fatal("Pop did not work as expected.")
+	}
+	if stack.Len() != 0 {
+		t.Fatal("Len did not work as expected.")
+	}
 }
