@@ -1,3 +1,25 @@
-# [Data structure](https://en.wikipedia.org/wiki/Data_structure)
+# Data Structure
 
-[List of data structures](https://en.wikipedia.org/wiki/List_of_data_structures)
+## Arrays
+
++ Array
+    + Dynamically expanded version
+
+## Lists
+
++ LinkedList
+    + Singly linked list
+    + Doubly linked list
+    + Circular linked list
+
+## Stack
+
++ Sequential stack
+    + Dynamically expanded version
++ Chained stack
+
+## Queue
+
++ Sequential queue
+    + Dynamically expanded version
++ Chained queue

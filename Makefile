@@ -3,6 +3,9 @@ GOFMT ?= gofmt "-s"
 PACKAGES ?= $(shell $(GO) list ./... | grep -v integrations)
 GOFILES := $(shell find . -name "*.go" -type f)
 
+.PHONY: check
+check: test lint golangci-lint
+
 .PHONY: fmt
 fmt:
 	$(GOFMT) -w $(GOFILES)
@@ -34,6 +37,3 @@ golangci-lint:
 		curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s -- -b $(GOPATH)/bin v1.23.6; \
 	fi
 	golangci-lint run --deadline=3m
-
-.PHONY: check
-check: test lint golangci-lint
