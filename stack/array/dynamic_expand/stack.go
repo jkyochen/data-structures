@@ -9,47 +9,41 @@ const defaultCapacity = 3
 
 // Stack last input first output LIFO data structure
 type Stack struct {
-	data   []int
-	length int
+	data []int
 }
 
 // New create new Stack
 func New() *Stack {
 	return &Stack{
-		data:   make([]int, defaultCapacity),
-		length: 0,
+		data: make([]int, 0, defaultCapacity),
 	}
 }
 
 // Push add new element to Stack
 func (s *Stack) Push(value int) error {
-	if s.length == cap(s.data) {
-		s.data = append(s.data, 0)
-	}
-
-	s.data[s.length] = value
-	s.length++
+	s.data = append(s.data, value)
 	return nil
 }
 
 // Pop get element from Stack
 func (s *Stack) Pop() (int, error) {
-	if s.length == 0 {
+	if len(s.data) == 0 {
 		return 0, errors.New("Stack is empty")
 	}
-	s.length--
-	return s.data[s.length], nil
+	v := s.data[len(s.data)-1]
+	s.data = s.data[:len(s.data)-1]
+	return v, nil
 }
 
 // Len return stack length
 func (s *Stack) Len() int {
-	return s.length
+	return len(s.data)
 }
 
 func (s *Stack) print() string {
 
 	var str string
-	for i := 0; i < s.length; i++ {
+	for i := 0; i < len(s.data); i++ {
 		str += strconv.Itoa(s.data[i]) + "|"
 	}
 	return str

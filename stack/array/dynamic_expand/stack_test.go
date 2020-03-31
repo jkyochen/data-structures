@@ -63,6 +63,11 @@ func TestPop(t *testing.T) {
 	if err != nil {
 		t.Fatal("Push did not work as expected.")
 	}
+	v, err = stack.Pop()
+	if err != nil || v != 3 {
+		t.Fatal("Pop did not work as expected.")
+	}
+
 	err = stack.Push(4)
 	if err != nil {
 		t.Fatal("Push did not work as expected.")
